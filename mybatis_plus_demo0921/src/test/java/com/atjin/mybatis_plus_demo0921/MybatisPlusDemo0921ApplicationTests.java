@@ -3,10 +3,14 @@ package com.atjin.mybatis_plus_demo0921;
 import com.atjin.mybatis_plus_demo0921.entity.UserEntity;
 import com.atjin.mybatis_plus_demo0921.mapper.UserMapper;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.sql.Wrapper;
 import java.util.List;
 
 @SpringBootTest
@@ -43,11 +47,22 @@ class MybatisPlusDemo0921ApplicationTests {
         System.out.println(i);
     }
     @Test
-    void delete() {
-
+    void selectPage() {
+        Page<UserEntity> page = new Page<>(1,3);
+        Page<UserEntity> userEntityPage = userMapper.selectPage(page, null);
+        System.out.println(userEntityPage.getCurrent());
+        System.out.println(userEntityPage.getRecords());
     }
+
     @Test
     void logicDelete() {
-
+        userMapper.deleteById(1440196619776532482L);
     }
+
+    @Test
+    void queryWrapper() {
+        QueryWrapper<UserEntity>  wrapper = new QueryWrapper();
+        //wrapper
+    }
+
 }
