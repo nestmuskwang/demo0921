@@ -31,6 +31,7 @@ class MybatisPlusDemo0921ApplicationTests {
     void insert() {
         UserEntity userEntity = new UserEntity();
         userEntity.setAge(33);
+
         userEntity.setName("zhang");
         userEntity.setEmail("zhagn@com");
         int insert = userMapper.insert(userEntity);
