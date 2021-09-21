@@ -5,6 +5,7 @@ import com.atjin.mybatis_plus_demo0921.mapper.UserMapper;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,7 +63,9 @@ class MybatisPlusDemo0921ApplicationTests {
     @Test
     void queryWrapper() {
         QueryWrapper<UserEntity>  wrapper = new QueryWrapper();
-        //wrapper
+        wrapper.select("id","name");
+        List<UserEntity> userEntities = userMapper.selectList(wrapper);
+        System.out.println(userEntities);
     }
 
 }
